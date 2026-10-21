@@ -1,0 +1,61 @@
+{
+	"name": "n8n-nodes-taddy-podcast-api",
+	"version": "0.1.0",
+	"description": "n8n community node for the Taddy Podcast API: search 4M podcasts and 200M episodes, read top charts, fetch transcripts, and receive webhook events",
+	"license": "MIT",
+	"homepage": "https://taddy.org/developers/podcast-api",
+	"keywords": [
+		"n8n-community-node-package",
+		"taddy",
+		"podcast",
+		"podcasts",
+		"podcast api",
+		"transcripts"
+	],
+	"author": {
+		"name": "Taddy API",
+		"email": "danny@taddy.org"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/taddyorg/n8n-nodes-taddy-podcast-api.git"
+	},
+	"scripts": {
+		"build": "n8n-node build",
+		"build:watch": "tsc --watch",
+		"dev": "n8n-node dev",
+		"lint": "n8n-node lint",
+		"lint:fix": "n8n-node lint --fix",
+		"generate:enums": "node scripts/generate-enums.js && prettier --write nodes/TaddyPodcastApi/shared/enums.ts",
+		"release": "n8n-node release",
+		"prepublishOnly": "n8n-node prerelease",
+		"test:queries": "node scripts/validate-queries.js",
+		"test:smoke": "node scripts/smoke-test.js",
+		"test:trigger": "node scripts/trigger-test.js"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"strict": true,
+		"credentials": [
+			"dist/credentials/TaddyPodcastApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/TaddyPodcastApi/TaddyPodcastApi.node.js",
+			"dist/nodes/TaddyPodcastApi/TaddyPodcastApiTrigger.node.js"
+		]
+	},
+	"devDependencies": {
+		"@n8n/node-cli": "*",
+		"eslint": "9.39.4",
+		"graphql": "^16.14.2",
+		"prettier": "3.8.3",
+		"release-it": "20.2.0",
+		"typescript": "5.9.3"
+	},
+	"peerDependencies": {
+		"n8n-workflow": "*"
+	}
+}
